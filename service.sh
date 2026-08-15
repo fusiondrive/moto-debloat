@@ -22,6 +22,7 @@ hide_dir /product/app/TFDashboard
 hide_dir /product/app/TFGamesHub
 hide_dir /product/priv-app/GameMode
 hide_dir /product/priv-app/SmartFeed
+hide_dir /product/priv-app/TFTheDaily
 
 # LKM loads after PackageManager has scanned /product. Stop processes that
 # may already have received BOOT_COMPLETED before the mount was applied.
@@ -31,6 +32,7 @@ hide_dir /product/priv-app/SmartFeed
 /system/bin/su 2000 -c '/system/bin/am force-stop com.dti.folderlauncher' >/dev/null 2>&1
 /system/bin/su 2000 -c '/system/bin/am force-stop com.motorola.gamemode' >/dev/null 2>&1
 /system/bin/su 2000 -c '/system/bin/am force-stop com.motorola.smartfeed' >/dev/null 2>&1
+/system/bin/su 2000 -c '/system/bin/am force-stop com.huub.tiger' >/dev/null 2>&1
 echo "$(/system/bin/date '+%F %T') service complete" >>"$LOG"
 
 # With LKM late-load, PackageManager has already scanned /product. Restart

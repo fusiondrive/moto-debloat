@@ -11,6 +11,7 @@ from the read-only `product` partition on compatible Motorola devices.
 - GamesHub: `com.dti.folderlauncher`
 - Motorola Games: `com.motorola.gamemode`
 - The Daily / Smart Feed: `com.motorola.smartfeed`
+- TheDaily preload: `com.huub.tiger`
 
 ## Requirements
 
