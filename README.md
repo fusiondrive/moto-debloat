@@ -1,13 +1,13 @@
-# Tracfone Debloat KernelSU Module
+# Motorola Debloat KernelSU Module
 
-This KernelSU module hides selected Tracfone and Motorola preload applications
-from the read-only `product` partition.
+This KernelSU module hides selected Motorola and carrier preload applications
+from the read-only `product` partition on compatible Motorola devices.
 
 ## Hidden packages
 
 - Device Pulse: `com.tracfone.preload.accountservices`
-- Digital Turbine installer: `com.dti.tracfone`
-- Swish dashboard: `com.swishme.tracfone`
+- Digital Turbine carrier installer: `com.dti.tracfone`
+- Swish carrier dashboard: `com.swishme.tracfone`
 - GamesHub: `com.dti.folderlauncher`
 - Motorola Games: `com.motorola.gamemode`
 - The Daily / Smart Feed: `com.motorola.smartfeed`
@@ -46,6 +46,6 @@ The module root is the directory containing `module.prop`. To create an install
 ZIP, archive the contents of this directory without adding a parent directory:
 
 ```sh
-cd ksu-debloat-tracfone
-zip -r ../debloat_tracfone.zip .
+cd moto-debloat
+zip -r ../moto_debloat.zip .
 ```

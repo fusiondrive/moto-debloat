@@ -1,12 +1,12 @@
 #!/system/bin/sh
 
 MODDIR=${0%/*}
-LOG=/data/adb/debloat_tracfone.log
+LOG=/data/adb/moto_debloat.log
 EMPTY="$MODDIR/empty"
 
 # This script is also installed in /data/adb/service.d for LKM. In that
 # location the empty bind source remains in the installed module directory.
-[ -d "$EMPTY" ] || EMPTY=/data/adb/modules/debloat_tracfone/empty
+[ -d "$EMPTY" ] || EMPTY=/data/adb/modules/moto_debloat/empty
 
 hide_dir() {
   target="$1"
@@ -36,7 +36,7 @@ echo "$(/system/bin/date '+%F %T') service complete" >>"$LOG"
 # With LKM late-load, PackageManager has already scanned /product. Restart
 # system_server once per boot only when it still caches the now-hidden APK.
 BOOT_ID=$(/system/bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null)
-BOOT_MARKER=/data/adb/debloat_tracfone.boot_id
+BOOT_MARKER=/data/adb/moto_debloat.boot_id
 LAST_BOOT=$(/system/bin/cat "$BOOT_MARKER" 2>/dev/null)
 if [ -n "$BOOT_ID" ] && [ "$BOOT_ID" != "$LAST_BOOT" ] && \
    [ ! -e /product/priv-app/TFDevicePulse/TFDevicePulse.apk ] && \
