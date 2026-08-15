@@ -1,0 +1,6 @@
+# Android 16 on this build labels Wi-Fi packets as unlabeled. Permit normal
+# network domains to send and receive those packets while keeping enforcing.
+allow * unlabeled packet { send recv }
+allow * unlabeled peer recv
+allow * netif netif { ingress egress }
+allow * node node { sendto recvfrom }

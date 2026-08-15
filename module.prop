@@ -1,0 +1,6 @@
+id=debloat_tracfone
+name=Tracfone Persistent Debloat
+version=1.3
+versionCode=4
+author=local
+description=Hides Device Pulse, Digital Turbine installer, Swish, GamesHub, Motorola Games and The Daily from read-only product partitions.
