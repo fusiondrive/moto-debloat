@@ -25,9 +25,11 @@ from the read-only `product` partition on compatible Motorola devices.
 3. In LKM mode, load KernelSU after boot as usual.
 
 The service binds empty directories over the selected product app directories,
-stops any already-started processes, and restarts `system_server` once per boot
-when PackageManager still has a cached system package. This refresh removes the
-cached launcher entries without modifying the read-only product partition.
+stops any already-started processes, removes residual user updates from
+`/data/app`, and removes apps attributed to the Digital Turbine installer. It
+also restarts `system_server` once per boot when PackageManager still has a
+cached system package. This refresh removes cached launcher entries without
+modifying the read-only product partition.
 
 ## SELinux network rule
 

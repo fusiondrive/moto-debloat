@@ -1,6 +1,6 @@
 id=moto_debloat
 name=Motorola Persistent Debloat
-version=1.5
-versionCode=6
+version=1.6
+versionCode=7
 author=local
 description=Hides selected Motorola and carrier preload apps from read-only product partitions.
