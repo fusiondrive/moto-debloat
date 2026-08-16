@@ -23,6 +23,13 @@ hide_dir /product/app/TFGamesHub
 hide_dir /product/priv-app/GameMode
 hide_dir /product/priv-app/SmartFeed
 hide_dir /product/priv-app/TFTheDaily
+hide_dir /product/priv-app/BRApps2
+hide_dir /product/priv-app/AppCloudOobeMotorolaStub
+hide_dir /product/priv-app/MotorolaIgnite
+hide_dir /product/priv-app/DTIgniteUSC
+hide_dir /product/priv-app/CricketIgnite
+hide_dir /product/priv-app/VzwIgnite-v22-5-7-884
+hide_dir /product/app/DTIgniteWidgetUSC
 
 remove_package() {
   /system/bin/su 2000 -c "/system/bin/pm uninstall --user 0 $1" >/dev/null 2>&1
@@ -61,23 +68,14 @@ for package in \
   com.motorola.gamemode \
   com.motorola.smartfeed \
   com.huub.tiger \
-  com.handmark.expressweather; do
+  com.handmark.expressweather \
+  com.motorola.brapps \
+  com.aura.oobe.motorola \
+  com.dti.motorola \
+  com.dti.cricket \
+  com.LogiaGroup.LogiaDeck \
+  com.digitalturbine.android.apps.news.uscellular; do
   remove_package "$package"
 done
 
 echo "$(/system/bin/date '+%F %T') service complete" >>"$LOG"
-
-# With LKM late-load, PackageManager has already scanned /product. Restart
-# system_server once per boot only when it still caches the now-hidden APK.
-BOOT_ID=$(/system/bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null)
-BOOT_MARKER=/data/adb/moto_debloat.boot_id
-LAST_BOOT=$(/system/bin/cat "$BOOT_MARKER" 2>/dev/null)
-if [ -n "$BOOT_ID" ] && [ "$BOOT_ID" != "$LAST_BOOT" ] && \
-   [ ! -e /product/priv-app/TFDevicePulse/TFDevicePulse.apk ] && \
-   /system/bin/pm path com.tracfone.preload.accountservices 2>/dev/null | \
-     /system/bin/grep -q '^package:'; then
-  echo "$BOOT_ID" >"$BOOT_MARKER"
-  echo "$(/system/bin/date '+%F %T') restarting framework" >>"$LOG"
-  SYSTEM_SERVER=$(/system/bin/pidof system_server)
-  [ -n "$SYSTEM_SERVER" ] && /system/bin/kill -9 "$SYSTEM_SERVER"
-fi

@@ -9,7 +9,14 @@ for target in \
   /product/app/TFGamesHub \
   /product/priv-app/GameMode \
   /product/priv-app/SmartFeed \
-  /product/priv-app/TFTheDaily; do
+  /product/priv-app/TFTheDaily \
+  /product/priv-app/BRApps2 \
+  /product/priv-app/AppCloudOobeMotorolaStub \
+  /product/priv-app/MotorolaIgnite \
+  /product/priv-app/DTIgniteUSC \
+  /product/priv-app/CricketIgnite \
+  /product/priv-app/VzwIgnite-v22-5-7-884 \
+  /product/app/DTIgniteWidgetUSC; do
   [ -d "$target" ] || continue
   mount -o bind "$MODDIR/empty" "$target"
 done

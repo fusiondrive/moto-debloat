@@ -10,8 +10,14 @@ from the read-only `product` partition on compatible Motorola devices.
 - Swish carrier dashboard: `com.swishme.tracfone`
 - GamesHub: `com.dti.folderlauncher`
 - Motorola Games: `com.motorola.gamemode`
-- The Daily / Smart Feed: `com.motorola.smartfeed`
-- TheDaily preload: `com.huub.tiger`
+- Motorola Smart Feed: `com.motorola.smartfeed`
+- TheDaily: `com.huub.tiger`
+- App Box: `com.motorola.brapps`
+- MotoApps: `com.aura.oobe.motorola`
+- Moto App Manager: `com.dti.motorola`
+- Carrier Mobile Services managers: `com.dti.cricket`,
+  `com.LogiaGroup.LogiaDeck`
+- NewsPOP: `com.digitalturbine.android.apps.news.uscellular`
 
 ## Requirements
 
@@ -27,9 +33,9 @@ from the read-only `product` partition on compatible Motorola devices.
 The service binds empty directories over the selected product app directories,
 stops any already-started processes, removes residual user updates from
 `/data/app`, and removes apps attributed to the Digital Turbine installer. It
-also restarts `system_server` once per boot when PackageManager still has a
-cached system package. This refresh removes cached launcher entries without
-modifying the read-only product partition.
+keeps PackageManager's per-user uninstall records intact so the hidden apps do
+not return as newly discovered packages on the next boot. The read-only product
+partition is never modified.
 
 ## SELinux network rule
 
